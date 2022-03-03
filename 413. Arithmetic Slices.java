@@ -1,7 +1,6 @@
  public static int numberOfArithmeticSlices(int[] nums) {
         if (nums.length < 3) return 0;
         int start = 0;
-        int end = nums.length-3;
         int result = 0;
         int old_qw = 0;
         boolean full = true;
@@ -12,15 +11,14 @@
                 old_qw = qw1;
                 if (qw1 == qw2) result++;
             }
-            else if (qw1 == qw2 && qw2 == old_qw){
-                result += 2;
-            }
+            else if (qw1 == qw2 && qw2 == old_qw) result += 2;
             else if (qw1 == qw2) {
                 result++;
                 full = false;
             }
             else  full = false;
-            System.out.printf("%d %d\n", qw1, qw2);
+            old_qw = qw1;
+            //System.out.printf("%d %d\n", qw1, qw2);
             start++;
         }
         if (full && nums.length > 4) result++;
